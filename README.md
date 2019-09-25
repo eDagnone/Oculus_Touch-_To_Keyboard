@@ -28,7 +28,7 @@ The Doom profile is meant for playing Doom 2016 in VR with the oculus Touch Cont
 Unique Motion Controls:
 
 - Raising both controllers up = spacebar (Assign spacebar to jump)
-     - i.e. for jumping in game, make a jumping motion with your hands)
+     - i.e. for jumping in game, make a jumping motion with your hands
 - Punching with controller in hand = b (assign b to melee)
      - In order for the punches to be detected as punches, they need to be done a specific way. 
      - With your right hand, punch at a slightly upward angle.
