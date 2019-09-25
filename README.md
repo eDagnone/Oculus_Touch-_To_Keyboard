@@ -11,8 +11,12 @@ These scripts require the use of another project, auto_oculus_touch.
 https://github.com/rajetic/auto_oculus_touch
 
 After downloading and unzipping Auto_Oculus_touch, simply cut/paste my files into 
-.../auto_oculus_touch/bin/
+...wherever you unzipped the file to.../auto_oculus_touch/bin/
 If you're unsure, there should be a bunch of other .ahk files in that folder.
+
+Once my scripts are there, they can be run. 
+
+Just make sure to have your Oculus rift plugged in and the Oculus app open when you run any .ahk script. Otherwise, the script will do nothing.
 
 __Different Profiles:__
 
@@ -29,7 +33,7 @@ Unique Motion Controls:
         -With your right hand, punch at a slightly upward angle.
         -As you punch, make sure your palm rotates downward, and the back of your hand faces up towards the ceiling.
         
-        While there is a bit of tolerance built in, if you don't punch this way, it won't reliably be detected.
+While there is a bit of tolerance built in, if you don't punch this way, it won't reliably be detected.
 
 
 In the immediate future, if you want the keybinds, look at the code using notepad. Later, I will make a list of what buttons, triggers, and gyroscope motions correspond to what keys. 
