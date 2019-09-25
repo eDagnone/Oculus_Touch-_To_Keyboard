@@ -27,11 +27,11 @@ As is though, the keybinds are mostly nonscencical.
 The Doom profile is meant for playing Doom 2016 in VR with the oculus Touch Controllers. In order to have the game in your headset though, you'll probably need vorpX (https://www.vorpx.com/)
 Unique Motion Controls: 
     - Raising both controllers up = spacebar (Assign spacebar to jump)
-        -i.e. for jumping in game, make a jumping motion with your hands)
+        - i.e. for jumping in game, make a jumping motion with your hands)
     - Punching with controller in hand = b (assign b to melee)
-        -In order for the punches to be detected as punches, they need to be done a specific way. 
-        -With your right hand, punch at a slightly upward angle.
-        -As you punch, make sure your palm rotates downward, and the back of your hand faces up towards the ceiling.
+        - In order for the punches to be detected as punches, they need to be done a specific way. 
+        - With your right hand, punch at a slightly upward angle.
+        - As you punch, make sure your palm rotates downward, and the back of your hand faces up towards the ceiling.
         
 While there is a bit of tolerance built in, if you don't punch this way, it won't reliably be detected.
 
