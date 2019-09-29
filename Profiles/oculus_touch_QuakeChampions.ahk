@@ -9,8 +9,6 @@ ResetFacing(1)
 lastRightYaw :=0
 lastRightRoll:=0
 swingingFrames:=0
-m:= 0
-weapon_switch_cooldown := 0
 
 DllCall("auto_oculus_touch\poll")
 
@@ -40,14 +38,14 @@ Loop {
         Send, {LButton down}
 	else
 		Send, {LButton up}
-	if (leftHandTrigger > 0.5)
-		Send, {Ctrl down}
+	if (leftIndexTrigger > 0.5)
+		Send, {1 down}
 	else
-		Send, {Ctrl up}
-	
-	//For Left index Trigger, 
-	//see weapon wheel.
-	
+		Send, {1 up}
+	if(leftHandTrigger > 0.5)
+		Send, {e down}
+	else
+		Send, {e up}
 	if(RightHandTrigger > 0.5)
 		Send, {p down}
 	else
@@ -55,11 +53,11 @@ Loop {
 	
 	//Left Thumbstick Positions
 	
-	if(leftThumbX > 0.4)
+	if(leftThumbX > 0.1)
 		Send, {d down}
 	else
 		Send, {d up}
-	if(leftThumbX < -0.4)
+	if(leftThumbX < -0.1)
 		Send, {a down}
 	else
 		Send, {a up}
@@ -71,7 +69,43 @@ Loop {
 		Send, {s down}
 	else
 		Send, {s up}
-
+	
+	//Right Thumbstick Positions
+	
+	if(rightThumbX > 0.4)
+		Send, {3 down}
+	else
+		Send, {3 up}
+	if(rightThumbX < -0.4)
+		Send, {5 down}
+	else
+		Send, {5 up}
+	if(rightThumbY > 0.4)
+		Send, {2 down}
+	else
+		Send, {2 up}
+	if(rightThumbY < -0.4)
+		Send, {4 down}
+	else
+		Send, {4 up}
+	
+	//ABXY
+	if down & ovrA
+		Send, {Space down}
+	else
+		Send, {Space up}
+	if down & ovrB
+		Send, {q down}
+	else
+		Send, {q up}
+	if down & ovrX
+		Send, {f down}
+	else
+		Send, {f up}
+	if down & ovrY
+		Send, {f down}
+	else
+		Send, {f up}
 	
 	//Thumbstick buttons
 	if (down & ovrLThumb){
@@ -88,98 +122,13 @@ Loop {
 	else{
 
 		Send, {c up}
-//WEAPON WHEEL
-		if (leftIndexTrigger > 0.4)
-		{
-			//Assign slope, take care of undefined cases
-			if (rightThumbX != 0)
-				m:=rightThumbY/rightThumbX
-			else
-			{
-				if(rightThumbY >0.4)
-					Send, 2
-				else if (rightThumbY < -0.4)
-					Send, 7
-			}
-			//Check if within 0.4u range, then map based on slope of line
-			if(rightThumbX*rightThumbX + rightThumbY*rightThumbY > 0.16)
-			{
-				if rightThumbY>=0
-				{
-					if(m<-2.077 || m>2.077)
-						Send, 2
-					else if(m > 0.228)
-						Send, 4
-					else if(m > 0)
-						Send, 6
-					else if( m < -0.228)
-						Send, 9
-					else
-						Send, 8
-				}
-				else
-				{
-					if(m<-0.797)
-						Send, 5
-					else if(m<0)
-						Send, 6
-					else if(m>0.797)
-						Send, 7
-					else
-						Send, 8
-				}
-				weapon_switch_cooldown:= 20
-			}
-			else if weapon_switch_cooldown == 0		
-				Send, r
-		}
-		else if (down & ovrRThumb)
-			Send, 3
-		else if(weapon_switch_cooldown < 10)
-		{
-			//Right Thumbstick Positions
-	
-			if(rightThumbX > 0.8)
-				Send, {x down}
-			else
-				Send, {x up}
-			if(rightThumbX < -0.8)
-				Send, {z down}
-			else
-				Send, {z up}
-			if(rightThumbY > 0.8)
-				Send, {F1 down}
-			else
-				Send, {F1 up}
-			if(rightThumbY < -0.8)
-				Send, {F2 down}
-			else
-				Send, {F2 up}
-		}
+			
+		if down & ovrRThumb
+			Send, {r down}
+		else
+			Send, {r up}
 	}
-
-	//ABXY
-	if down & ovrA
-		Send, {1 down}
-	else
-		Send, {1 up}
-	if down & ovrB
-		Send, {f down}
-	else
-		Send, {f up}
-	if down & ovrX
-	{
-		Send, {TAB}
-		Sleep, 200
-	}
-	else
-		Send, {TAB up}
-	if down & ovrY
-		Send, {e down}
-	else
-		Send, {e up}
 	
-
 	//Motion Controls Section
 	
 	//Pitch: aiming up is positive
@@ -191,17 +140,18 @@ Loop {
 	rightPitch:= GetPitch(1)
 	leftRoll:=GetRoll(0)
 	leftPitch:= GetPitch(0)
+	rightYaw:= GetYaw(1)
 		
 
 	//Jump
-	if rightPitch>30
+	if rightPitch>50
 	{
-		if leftPitch>30
-			Send, {Space down}
+		if leftPitch>50
+			Send, {Tab down}
 		}
 	else
 	{
-		Send, {Space up}
+		Send, {Tab up}
 	}
 	
 	//Punch
@@ -225,10 +175,5 @@ Loop {
 	lastRightRoll := rightRoll
 	lastRightPitch := rightPitch
 	
-	
-	
-	
-	if (weapon_switch_cooldown > 0)
-		weapon_switch_cooldown--
 	Sleep, 10	
 }
