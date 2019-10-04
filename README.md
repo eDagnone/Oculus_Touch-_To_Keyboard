@@ -25,7 +25,7 @@ By simply changing the variables, you can use it as a template to create your ow
 As is though, the keybinds are mostly nonscencical.
 
 The Doom profile is meant for playing Doom 2016 in VR with the oculus Touch Controllers. In order to have the game in your headset though, you'll probably need vorpX (https://www.vorpx.com/)
-Unique Motion Controls:
+Unique Controls:
 
 - Raising both controllers up = spacebar (Assign spacebar to jump)
      - i.e. for jumping in game, make a jumping motion with your hands
@@ -33,8 +33,13 @@ Unique Motion Controls:
      - In order for the punches to be detected as punches, they need to be done a specific way. 
      - With your right hand, punch at a slightly upward angle.
      - As you punch, make sure your palm rotates downward, and the back of your hand faces up towards the ceiling.
-        
-While there is a bit of tolerance built in, if you don't punch this way, it won't reliably be detected.
+     - While there is a bit of tolerance built in, if you don't punch this way, it won't reliably be detected.
+     
+- Weapon switching can be handled by holding down the left index trigger while simultaneously moving the right thumbstick to certian "zones". 
+     - Ex. Left Index Trigger + \[thumbstick up\] = 2.       Left Index Trigger + Thumbstick \[up, right 51 degrees\] = 4. 
+     - The "zones" for seperate keys are about 51 degrees apart.
+ 
 
+The Quake Profile is for Quake Champions. It is very similar to the Doom profile, but lacks the punch control. Weapon switching is similar in the regard that the thumbstick needs to be moved to certian zones, but different in the fact that you do not need to hold down the right index trigger, and each weapon's "zone" is 90 degrees apart.
 
 In the immediate future, if you want the keybinds, look at the code using notepad. Later, I will make a list of what buttons, triggers, and gyroscope motions correspond to what keys. 
