@@ -35,8 +35,9 @@ Unique Controls:
      - As you punch, make sure your palm rotates downward, and the back of your hand faces up towards the ceiling.
      - While there is a bit of tolerance built in, if you don't punch this way, it won't reliably be detected.
      
-- Weapon switching can be handled by holding down the left index trigger while simultaneously moving the right thumbstick to certian "zones". 
-     - Ex. Left Index Trigger + \[thumbstick up\] = 2.       Left Index Trigger + Thumbstick \[up, right 51 degrees\] = 4. 
+- Weapon switching (assuming weapons are bound to numbers) can be handled by holding down the left index trigger while simultaneously moving the right thumbstick to certian "zones". 
+     - Ex. Left Index Trigger + \[thumbstick up\] = 2.
+     - Ex. Left Index Trigger + Thumbstick \[up, right 51 degrees\] = 4. 
      - The "zones" for seperate keys are about 51 degrees apart.
  
 
