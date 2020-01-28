@@ -31,11 +31,11 @@ Loop {
     rightThumbX       := GetThumbStick(RightHand, XAxis)
     rightThumbY       := GetThumbStick(RightHand, YAxis)
 
-	//Digital Values
 	
     down     := GetButtonsDown()
 	
-	//Triggers
+	//TRIGGERS
+	
 	if (rightIndexTrigger > 0.5)
         Send, {LButton down}
 	else
@@ -48,12 +48,16 @@ Loop {
 	//For Left index Trigger, 
 	//see weapon wheel.
 	
+	//************************************WEAPON MOD
 	if(RightHandTrigger > 0.5)
 		Send, {p down}
 	else
 		Send, {p up}
+	//*************************************
 	
-	//Left Thumbstick Positions
+	
+	
+	//LATERAL MOVEMENT
 	
 	if(leftThumbX > 0.4)
 		Send, {d down}
@@ -73,23 +77,21 @@ Loop {
 		Send, {s up}
 
 	
-	//Thumbstick buttons
+	//CROUCH, ESC 
 	if (down & ovrLThumb){
 		if (down & ovrRThumb)
 		{
 			Sendlevel 1
 			Send {Esc}
-			Sleep, 200
+			Sleep, 400
 			Sendlevel 0
 		}
 		else
-			Send, {c down}
+			Send, c
 	}
-	else{
 
-		Send, {c up}
-//WEAPON WHEEL
-		if (leftIndexTrigger > 0.4)
+	//WEAPON WHEEL
+		if (leftIndexTrigger > 0.4) //Use this trigger as a "Shift" key
 		{
 			//Assign slope, take care of undefined cases
 			if (rightThumbX != 0)
@@ -97,44 +99,39 @@ Loop {
 			else
 			{
 				if(rightThumbY >0.4)
-					Send, 2
+					Send, 4
 				else if (rightThumbY < -0.4)
 					Send, 7
 			}
+			
 			//Check if within 0.4u range, then map based on slope of line
 			if(rightThumbX*rightThumbX + rightThumbY*rightThumbY > 0.16)
 			{
-				if rightThumbY>=0
+				if rightThumbX>0
 				{
-					if(m<-2.077 || m>2.077)
-						Send, 2
-					else if(m > 0.228)
+					if(m>0.58)
 						Send, 4
-					else if(m > 0)
-						Send, 6
-					else if( m < -0.228)
-						Send, 9
-					else
-						Send, 8
+					else if(m < -0.58)
+						Send, 5
+					else 
+						Send, 3
 				}
 				else
 				{
-					if(m<-0.797)
-						Send, 5
-					else if(m<0)
-						Send, 6
-					else if(m>0.797)
+					if(m>0.58)
 						Send, 7
+					else if(m<-0.58)
+						Send, t
 					else
 						Send, 8
 				}
 				weapon_switch_cooldown:= 20
 			}
-			else if weapon_switch_cooldown == 0		
+			else if weapon_switch_cooldown = 0		
 				Send, r
 		}
 		else if (down & ovrRThumb)
-			Send, 3
+			Send, 6
 		else if(weapon_switch_cooldown < 10)
 		{
 			//Right Thumbstick Positions
@@ -156,7 +153,6 @@ Loop {
 			else
 				Send, {F2 up}
 		}
-	}
 
 	//ABXY
 	if down & ovrA
@@ -164,23 +160,19 @@ Loop {
 	else
 		Send, {1 up}
 	if down & ovrB
-		Send, {f down}
+		Send, {2 down}
 	else
-		Send, {f up}
+		Send, {2 up}
 	if down & ovrX
 	{
 		Send, {TAB}
 		Sleep, 200
 	}
-	else
-		Send, {TAB up}
 	if down & ovrY
-		Send, {e down}
-	else
-		Send, {e up}
+		Send, e
 	
 
-	//Motion Controls Section
+//MOTION CONTROLS
 	
 	//Pitch: aiming up is positive
 	//Roll: tilting clockwise is positive
@@ -193,24 +185,24 @@ Loop {
 	leftPitch:= GetPitch(0)
 		
 
-	//Jump
+	//JUMP
 	if rightPitch>30
 	{
 		if leftPitch>30
 			Send, {Space down}
-		}
-	else
-	{
-		Send, {Space up}
+		else
+			Send, {Space up}
 	}
+	else
+			Send, {Space up}
 	
-	//Punch
+	//PUNCH
 	if(lastRightRoll-rightRoll > 0.9)
 	{
 		if(rightPitch-lastRightPitch >0.2)
 		{
 		if((swingingFrames > 7) & (leftPitch < 20)){
-			Send, {b down}
+			Send, {f down}
 			swingingFrames = 0
 			}
 		else
@@ -219,14 +211,16 @@ Loop {
 	}
 	else
 	{
-		Send, {b up}
+		Send, {f up}
 		swingingframes := 0
 	}
+	
 	lastRightRoll := rightRoll
 	lastRightPitch := rightPitch
 	
 	
 	
+	//COOLDOWNS
 	
 	if (weapon_switch_cooldown > 0)
 		weapon_switch_cooldown--
