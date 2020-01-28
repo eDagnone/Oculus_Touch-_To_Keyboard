@@ -24,7 +24,8 @@ The Master Profile is just used to get all inputs and is recommended ONLY for de
 By simply changing the variables, you can use it as a template to create your own profiles. It can be used to assign basically any button/trigger/joystick axis to any keyboard key or mouse motion.
 As is though, the keybinds are mostly nonscencical.
 
-The Doom profile is meant for playing Doom 2016 in VR with the oculus Touch Controllers. In order to have the game in your headset though, you'll probably need vorpX (https://www.vorpx.com/)
+The Doom profile is meant for playing Doom 2016 in VR with the oculus Touch Controllers. In order to have the game in your headset though, you'll probably need vorpX (https://www.vorpx.com/).
+
 Unique Controls:
 
 - Raising both controllers up = spacebar (Assign spacebar to jump)
